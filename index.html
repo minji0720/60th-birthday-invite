@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>박창주 & 설숙사 환갑잔치</title>
 
-  <!-- ✅ 글꼴 (업로드 필요 없음) -->
-  <!-- 제목: 캘리 느낌 / 본문: 단정한 명조 -->
+  <!-- 폰트: 제목 캘리 + 본문 명조 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
@@ -14,11 +13,10 @@
   <style>
     :root{
       --bg:#f6f3ee;
-      --paper:#ffffff;
-      --ink:#1f1f1f;
+      --card:#ffffff;
+      --text:#1f1f1f;
       --muted:#6f6a63;
-      --green:#2f6b57;     /* 예시 느낌 초록 제목 */
-      --accent:#b68b3c;    /* 버튼 골드 */
+      --accent:#b68b3c;
       --dark:#2f2b25;
       --radius:22px;
       --shadow:0 14px 34px rgba(0,0,0,0.10);
@@ -29,7 +27,7 @@
     body{
       margin:0;
       background:var(--bg);
-      color:var(--ink);
+      color:var(--text);
       font-family:"Gowun Batang", serif;
     }
 
@@ -38,7 +36,7 @@
       margin: 16px auto 76px;
     }
 
-    /* ✅ 음악 화이트 페이드 */
+    /* 화이트 페이드 */
     .white-fade{
       position:fixed; inset:0;
       background:#fff;
@@ -49,81 +47,28 @@
     }
     .white-fade.show{ opacity:0.85; }
 
-    /* ✅ 상단 초대장(배경 이미지) */
-    .invite{
-      position:relative;
+    /* 히어로(대표 이미지 한 장) */
+    .hero{
       border-radius: var(--radius);
       overflow:hidden;
       box-shadow: var(--shadow);
-      background: linear-gradient(135deg,#ffffff 0%, #f5efe6 60%, #ffffff 100%); /* bg 없을 때도 예쁨 */
-      isolation:isolate;
+      background:#fff;
     }
-
-    /* bg.png가 있을 때 보이는 영역 */
-    .bg{
+    .hero img{
       width:100%;
       display:block;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16/9;      /* 배너 비율과 비슷하게 */
       object-fit: cover;
     }
 
-    /* 텍스트 레이어 */
-    .overlay{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      text-align:center;
-    }
-
-    /* 배경 위 종이 카드 */
-    .paper{
-      width:min(92%, 580px);
-      padding: 18px 16px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(5px);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.10);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    /* ✅ 제목 폰트 */
-    .calli{
-      font-family:"Nanum Brush Script", cursive;
-      font-size: clamp(38px, 9.6vw, 58px);
-      color: var(--green);
-      letter-spacing: 0.5px;
-      margin: 0 0 10px 0;
-      line-height: 0.98;
-    }
-
-    /* ✅ 서브타이틀(본문 폰트) */
-    .sub{
-      margin: 0;
-      font-size: clamp(16px, 3.9vw, 20px);
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      line-height: 1.35;
-    }
-
-    .msg{
-      margin: 10px 0 0;
-      font-size: 14px;
-      line-height: 1.75;
-      color: #2b2b2b;
-      word-break: keep-all;
-    }
-
-    /* ✅ 중앙 큰 재생 버튼 */
+    /* 재생 CTA (크게, 중앙) */
     .playbar{
-      margin-top: 12px;
+      margin-top: 14px;
       display:flex;
       justify-content:center;
     }
     .bigplay{
-      width:min(560px, 100%);
+      width:min(680px, 100%);
       border:none;
       border-radius: 999px;
       padding: 14px 16px;
@@ -146,42 +91,41 @@
       display:flex; align-items:center; justify-content:center;
       font-size:14px;
     }
-
     .hint{
       margin-top:8px;
+      text-align:center;
       font-size:12px;
       color:#8f867c;
     }
 
-    /* ✅ 아버님 이미지 */
-    .portrait{
-      margin-top: 12px;
-      display:flex;
-      justify-content:center;
-    }
-    .portrait img{
-      width:min(420px, 100%);
-      border-radius: 18px;
-      box-shadow: var(--shadow2);
-      display:block;
-      background:#fff;
-    }
-
-    /* 하단 정보 카드 */
+    /* 카드 */
     .card{
       margin-top: 14px;
-      background: var(--paper);
+      background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow2);
       padding: 18px 16px;
     }
-
     .card h2{
       margin:0 0 10px;
       font-size: 16px;
       font-weight: 700;
       color:#2b2b2b;
       letter-spacing:-0.2px;
+    }
+
+    .msg{
+      font-size: 15px;
+      line-height: 1.95;
+      color:#2b2b2b;
+      word-break: keep-all;
+    }
+
+    .msg .sign{
+      display:block;
+      margin-top: 10px;
+      color:#6f6a63;
+      font-size: 14px;
     }
 
     .info{
@@ -242,7 +186,7 @@
       color:#9b948c;
     }
 
-    /* 보조 작은 버튼(구석) */
+    /* 보조 음악 버튼(구석) */
     .fab{
       position: fixed;
       right: 14px;
@@ -277,7 +221,7 @@
 
     @media (max-width: 360px){
       .wrap{ width: calc(100vw - 22px); }
-      .msg{ font-size: 13px; }
+      .msg{ font-size: 14px; }
       .bigplay{ font-size: 14px; }
     }
   </style>
@@ -290,58 +234,59 @@
     <source src="music.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- 보조 작은 버튼 -->
   <button id="musicFab" class="fab" type="button" aria-label="배경음악 재생/정지">
     <span class="dot" aria-hidden="true"></span>
     <span id="musicLabel">음악 켜기</span>
   </button>
 
   <div class="wrap">
-    <!-- ✅ 배경 이미지 초대장 -->
-    <div class="invite">
-      <!-- bg.png가 없으면 안 보이므로 꼭 업로드 필요 -->
-      <img class="bg" src="bg.png" alt="배경" onerror="this.style.display='none';" />
-      <div class="overlay">
-        <div class="paper">
-          <div class="calli">환갑잔치</div>
-          <p class="sub">박창주 & 설숙사 환갑을 축하드립니다</p>
-          <p class="msg">
-            평생 가족을 위해 헌신하신 두 분께 깊은 감사의 마음을 전합니다.<br>
-            함께 걸어온 60년의 길 위에서 따뜻한 시간을 나누고자 합니다.<br>
-            귀한 걸음으로 자리를 빛내 주시면 감사하겠습니다.<br>
-            <span style="color:#6f6a63;">- 사랑하는 가족 일동 -</span>
-          </p>
+    <!-- ✅ 대표 이미지 -->
+    <div class="hero">
+      <img src="hero.png" alt="환갑잔치 대표 이미지" />
+    </div>
 
-          <div class="playbar">
-            <button id="startBtn" class="bigplay" type="button">
-              <span class="bubble">▶</span>
-              잔잔한 피아노 음악과 함께 보기
-            </button>
-          </div>
-          <div class="hint">※ 모바일 정책상 소리는 “버튼 터치” 후 재생됩니다.</div>
-        </div>
+    <!-- ✅ 큰 재생 버튼 -->
+    <div class="playbar">
+      <button id="startBtn" class="bigplay" type="button">
+        <span class="bubble">▶</span>
+        잔잔한 피아노 음악과 함께 보기
+      </button>
+    </div>
+    <div class="hint">※ 모바일 정책상 소리는 “버튼 터치” 후 재생됩니다.</div>
+
+    <!-- ✅ 감동 문구(심금 울리는 버전) -->
+    <div class="card">
+      <h2>💌 초대의 말씀</h2>
+      <div class="msg">
+        살다 보면, 말로 다 전하지 못한 마음이 더 많이 남습니다.<br>
+        늘 먼저 걱정해 주시고, 뒤에서 묵묵히 지켜봐 주셨던 두 분의 시간 덕분에<br>
+        오늘의 우리가 있습니다.<br><br>
+
+        “고맙습니다”라는 한마디로는 부족하지만,<br>
+        그 마음을 꼭 전하고 싶어 이 자리를 마련했습니다.<br>
+        두 분이 걸어오신 60년의 길을 함께 축하해 주시고,<br>
+        앞으로의 날들이 더 따뜻하고 빛나도록 마음을 보태 주세요.<br><br>
+
+        귀한 걸음으로 자리를 빛내 주시면 큰 기쁨이겠습니다.
+        <span class="sign">- 사랑하는 가족 일동 -</span>
       </div>
     </div>
 
-    <!-- 아버님 이미지 -->
-    <div class="portrait">
-      <img src="dad.png" alt="아버님 이미지">
-    </div>
-
+    <!-- ✅ 행사 안내 + 지도 -->
     <div class="card">
       <h2>📌 행사 안내</h2>
       <div class="info">
         <div class="row">
           <div class="ico">📅</div>
-          <div class="val">2026년 04월 11일 (토)</div>
+          <div class="val"><strong>일시</strong> : 2026년 04월 11일 (토) 18:30</div>
         </div>
         <div class="row">
           <div class="ico">⏰</div>
-          <div class="val">18:30 ~ 21:00 <span style="color:#8a857e;">(3부)</span></div>
+          <div class="val"><strong>시간</strong> : 18:30 ~ 21:00 (3부)</div>
         </div>
         <div class="row">
           <div class="ico">📍</div>
-          <div class="val">안산 마이어스 <strong>(시드니 홀)</strong></div>
+          <div class="val"><strong>장소</strong> : 안산 마이어스 (시드니 홀)</div>
         </div>
       </div>
 
