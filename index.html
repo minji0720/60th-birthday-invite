@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>박창주 & 설숙사 환갑연 초대장</title>
+  <title>박창주 & 설숙사 환갑잔치</title>
 
   <!-- 폰트: 제목 캘리 + 본문 명조 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,8 @@
       --radius:22px;
       --shadow:0 14px 34px rgba(0,0,0,0.10);
       --shadow2:0 8px 20px rgba(0,0,0,0.07);
+      --soft:#fbfaf8;
+      --line:rgba(182,139,60,0.10);
     }
 
     html{ -webkit-text-size-adjust:100%; }
@@ -33,7 +35,7 @@
 
     .wrap{
       width:min(760px, calc(100vw - 28px));
-      margin: 16px auto 76px;
+      margin: 16px auto 90px;
     }
 
     /* 화이트 페이드 */
@@ -47,7 +49,7 @@
     }
     .white-fade.show{ opacity:0.85; }
 
-    /* 히어로(대표 이미지 한 장) */
+    /* 히어로(대표 이미지) */
     .hero{
       border-radius: var(--radius);
       overflow:hidden;
@@ -57,11 +59,11 @@
     .hero img{
       width:100%;
       display:block;
-      aspect-ratio: 16/9;      /* 배너 비율과 비슷하게 */
+      aspect-ratio: 16/9;
       object-fit: cover;
     }
 
-    /* 재생 CTA (크게, 중앙) */
+    /* 큰 재생 버튼 */
     .playbar{
       margin-top: 14px;
       display:flex;
@@ -112,6 +114,9 @@
       font-weight: 700;
       color:#2b2b2b;
       letter-spacing:-0.2px;
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
 
     .msg{
@@ -120,14 +125,14 @@
       color:#2b2b2b;
       word-break: keep-all;
     }
-
     .msg .sign{
       display:block;
       margin-top: 10px;
-      color:#6f6a63;
+      color:var(--muted);
       font-size: 14px;
     }
 
+    /* 행사 정보 */
     .info{
       display:grid;
       gap:10px;
@@ -140,12 +145,34 @@
       align-items:flex-start;
       padding: 10px 12px;
       border-radius: 14px;
-      background: #fbfaf8;
-      border: 1px solid rgba(182,139,60,0.10);
+      background: var(--soft);
+      border: 1px solid var(--line);
     }
     .ico{ width:22px; flex:0 0 22px; text-align:center; }
     .val{ flex:1; line-height:1.55; }
     .val strong{ font-weight:700; color: var(--dark); }
+
+    /* ✅ 오시는 길: iframe 제거 + 예쁜 버튼 */
+    .waybox{
+      margin-top: 10px;
+      padding: 14px 12px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px dashed rgba(182,139,60,0.25);
+    }
+    .wayline{
+      font-size:14px;
+      color:#3a3a3a;
+      line-height:1.7;
+      margin:0;
+      word-break: keep-all;
+    }
+    .wayline small{
+      display:block;
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 12px;
+    }
 
     .btns{
       display:flex;
@@ -168,17 +195,9 @@
       font-family:"Gowun Batang", serif;
     }
     .btn.primary{ background: var(--accent); color:#fff; }
-    .btn.secondary{ background: #2f2b25; color:#fff; }
+    .btn.secondary{ background: var(--dark); color:#fff; }
 
-    .map{
-      width:100%;
-      height: 320px;
-      border:0;
-      border-radius: 18px;
-      margin-top: 12px;
-      overflow:hidden;
-    }
-
+    /* 하단 표기 */
     .foot{
       margin-top: 14px;
       text-align:center;
@@ -186,7 +205,7 @@
       color:#9b948c;
     }
 
-    /* 보조 음악 버튼(구석) */
+    /* 보조 음악 버튼 */
     .fab{
       position: fixed;
       right: 14px;
@@ -240,12 +259,12 @@
   </button>
 
   <div class="wrap">
-    <!-- ✅ 대표 이미지 -->
+    <!-- 대표 이미지 -->
     <div class="hero">
       <img src="hero.png" alt="환갑잔치 대표 이미지" />
     </div>
 
-    <!-- ✅ 큰 재생 버튼 -->
+    <!-- 큰 재생 버튼 -->
     <div class="playbar">
       <button id="startBtn" class="bigplay" type="button">
         <span class="bubble">▶</span>
@@ -254,28 +273,25 @@
     </div>
     <div class="hint">※ 모바일 정책상 소리는 “버튼 터치” 후 재생됩니다.</div>
 
-    <!-- ✅ 감동 문구(심금 울리는 버전) -->
+    <!-- 감동 문구 -->
     <div class="card">
       <h2>💌 초대의 말씀</h2>
       <div class="msg">
-        언제나 어느 누구보다 먼저,<br>
-        우리의 하루를 걱정해 주셨던 두 분.<br><br>
-        
-        뒤에서 묵묵히 지켜봐 주셨던 그 시간들이<br>
-        오늘의 우리를 만들었습니다.<br><br>
+        살다 보면, 전하지 못한 마음이 더 많이 남는다는 것을 알게 됩니다.<br>
+        늘 먼저 걱정해 주시고 묵묵히 지켜봐 주셨던 두 분의 시간 덕분에<br>
+        오늘의 우리가 있습니다.<br><br>
 
-        그 고마움과 사랑을<br>
-        이제는 조금이나마 돌려드리고 싶습니다.<br><br>
-        
+        “감사합니다”라는 한마디로는 부족하지만,<br>
+        그 마음을 꼭 전하고 싶어 이 자리를 마련했습니다.<br>
         두 분이 걸어오신 60년의 길을 함께 축하해 주시고,<br>
         앞으로의 날들이 더 따뜻하고 빛나도록 마음을 보태 주세요.<br><br>
 
-        귀한 걸음으로 자리를 빛내 주신다면 더없는 기쁨이겠습니다.
+        귀한 걸음으로 함께해 주신다면 더없는 기쁨이겠습니다.
         <span class="sign">- 사랑하는 가족 일동 -</span>
       </div>
     </div>
 
-    <!-- ✅ 행사 안내 + 지도 -->
+    <!-- 행사 안내 -->
     <div class="card">
       <h2>📌 행사 안내</h2>
       <div class="info">
@@ -289,21 +305,36 @@
         </div>
         <div class="row">
           <div class="ico">📍</div>
-          <div class="val"><strong>장소</strong> : 안산 마이어스 (시드니 홀)</div>
+          <div class="val"><strong>장소</strong> : 안산 마이어스 <strong>(시드니 홀)</strong></div>
         </div>
       </div>
 
-      <div class="btns">
-        <a class="btn primary" href="https://map.naver.com/v5/search/%EC%95%88%EC%82%B0%20%EB%A7%88%EC%9D%B4%EC%96%B4%EC%8A%A4" target="_blank" rel="noopener">🧭 네이버 지도</a>
-        <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=%EC%95%88%EC%82%B0%20%EB%A7%88%EC%9D%B4%EC%96%B4%EC%8A%A4" target="_blank" rel="noopener">📍 구글 지도</a>
+      <!-- ✅ 오시는 길(iframe 대신 안내 + 버튼) -->
+      <div class="waybox">
+        <p class="wayline">
+          네이버/구글 지도를 눌러 내비게이션으로 바로 이동하세요.
+          <small>※ 모바일에서는 지도 미리보기(iframe)가 차단될 수 있어 버튼 연결 방식이 가장 안정적입니다.</small>
+        </p>
       </div>
 
-      <iframe
-        class="map"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=%EC%95%88%EC%82%B0%20%EB%A7%88%EC%9D%B4%EC%96%B4%EC%8A%A4&output=embed">
-      </iframe>
+      <div class="btns">
+        <a class="btn primary"
+           href="https://map.naver.com/v5/search/%EC%95%88%EC%82%B0%20%EB%A7%88%EC%9D%B4%EC%96%B4%EC%8A%A4"
+           target="_blank" rel="noopener">🧭 네이버 지도</a>
+
+        <a class="btn secondary"
+           href="https://www.google.com/maps/search/?api=1&query=%EC%95%88%EC%82%B0%20%EB%A7%88%EC%9D%B4%EC%96%B4%EC%8A%A4"
+           target="_blank" rel="noopener">📍 구글 지도</a>
+      </div>
+
+      <!-- 선택: 카카오맵도 원하면 추가 가능 -->
+      <!--
+      <div class="btns">
+        <a class="btn secondary"
+           href="https://map.kakao.com/?q=안산 마이어스"
+           target="_blank" rel="noopener">🟡 카카오맵</a>
+      </div>
+      -->
     </div>
 
     <div class="foot">© 2026 박창주 & 설숙사 환갑잔치</div>
@@ -312,7 +343,6 @@
   <script>
     const bgm = document.getElementById("bgm");
     const fade = document.getElementById("fade");
-
     const fab = document.getElementById("musicFab");
     const label = document.getElementById("musicLabel");
     const startBtn = document.getElementById("startBtn");
